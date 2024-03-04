@@ -8,10 +8,14 @@
 </head>
 <body>
     <section class="section section1">
-        <h1 class ="section-h1"> ANALISIS Y DESARROLLO DE SISTEMAS DE INFORMACION </h1>        
+        <h1 class ="section-h1"> BIENVENIDO AL SISTEMA DE NOMINA</h1>        
     </section>
     <section section class="section section2">
     <form action="#">
+        <input type="submit" value="Registrar Empleado" class="btn btn-primary" formaction="controlador/controladorRegistroEmpleado.php">
+        <input type="submit" value="Registrar Pariente" class="btn btn-primary" formaction="controlador/controladorRegistrarPariente.php">
+        <input type="submit" value="Listar Empleado" class="btn btn-primary" formaction="controlador/controladorListarEmpleado.php">
+        <input type="submit" value="Listar Pariente" class="btn btn-primary" formaction="controlador/controladorListarPariente.php">
         <input type="submit" value="Registrar Empleado" class="btn btn-primary" formaction="controlador/controladorregistro.php">
         <input type="submit" value="Registrar Pariente" class="btn btn-primary" formaction="controlador/controladorregistro.php">
         <input type="submit" value="Listar Empleado" class="btn btn-primary" formaction="controlador/controladorlistar.php">

@@ -10,6 +10,7 @@ class Persona{
     private $telefono;
     private $direccion;
     private $ciudad;
+    private $empresa;
 
     public function __construct($nombre, $apellido, $identificacion, $tipoDocumento, $genero, $correo, $fechaNacimiento, $telefono, $direccion, $ciudad) {
         $this->nombre = $nombre;
@@ -55,6 +56,39 @@ class Persona{
     }
     public function getCiudad(){
         return $this->ciudad;
+    }
+    public function setEmpresa($empresa){
+        $this->empresa = $empresa;
+    }
+    public function setNombre($nombre){
+        $this-> nombre = $nombre;
+    }
+    public function SetApellido($apellido){
+        $this->apellido = $apellido;
+    }
+    public function setIdentificacion($identificacion){
+        $this->identificacion = $identificacion;
+    }
+    public function setTipoDocumento($tipoDocumento){
+        $this->tipoDocumento= $tipoDocumento;
+    }
+    public function setGenero($genero){
+    $this->genero = $genero;
+    }
+    public function setCorreo($correo){
+        $this->correo = $correo;
+    }
+    public function setFechaNacimiento($fechaNacimiento){
+        $this->fechaNacimiento = $fechaNacimiento;
+    }
+    public function SetTelefono($telefono){
+        $this->telefono = $telefono;
+    }
+    public function setDireccion($direccion){
+        $this->direccion = $direccion;
+    }
+    public function setCiudad($ciudad){
+        return $this->ciudad = $ciudad;
     }
     
 

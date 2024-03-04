@@ -3,24 +3,25 @@ class Empresa{
     private $tipoContribuyente;
     private $nit;
     private $digitoVerificacion;
-    private $nombre;
-    private $telefono;
-    private $correo;
-    private $direccion;
+    private $nombreEmpresa;
+    private $telefonoEmpresa;
+    private $correoEmpresa;
+    private $direccionEmpresa;
     private $logo;
     private $rut;
     private $camaraComercio;
 
-    public function __construct($tipoContribuyente, $digitoVerificacion, $nit, $nombre, $telefono, $correo, $direccion,  $logo, $camaraComercio){
+    public function __construct($tipoContribuyente, $digitoVerificacion, $nit, $nombreEmpresa, $telefonoEmpresa, $correoEmpresa, $direccionEmpresa,  $logo, $rut, $camaraComercio){
     
         $this->nit = $nit;
-        $this->nombre = $nombre;
-        $this->telefono = $telefono;
-        $this->correo = $correo;
-        $this->direccion = $direccion;
+        $this->nombreEmpresa = $nombreEmpresa;
+        $this->telefonoEmpresa = $telefonoEmpresa;
+        $this->correoEmpresa = $correoEmpresa;
+        $this->direccionEmpresa = $direccionEmpresa;
         $this->logo = $logo;
         $this->camaraComercio = $camaraComercio;
         $this->tipoContribuyente = $tipoContribuyente;
+        $this->rut = $rut; 
         $this->digitoVerificacion = $digitoVerificacion;
     }
     public function getTipoContribuyente(){
@@ -32,17 +33,17 @@ class Empresa{
     public function getDigitoVerificacion(){
         return $this->digitoVerificacion;
     }
-    public function getNombre(){
-        return $this->nombre;
+    public function getNombreEmpresa(){
+        return $this->nombreEmpresa;
     }
-    public function getTelefono(){
-        return $this->telefono;
+    public function getTelefonoEmpresa(){
+        return $this->telefonoEmpresa;
     }
-    public function getCorreo(){
-        return $this->correo;
+    public function getCorreoEmpresa(){
+        return $this->correoEmpresa;
     }
-    public function getDireccion(){
-        return $this->direccion;
+    public function getDireccionEmpresa(){
+        return $this->direccionEmpresa;
     }
     public function getLogo(){
         return $this->logo;
@@ -62,29 +63,26 @@ class Empresa{
     public function setDigitoVerificacion($digitoVerificacion){
         $this->digitoVerificacion = $digitoVerificacion;
     }
-    public function setNombre($nombre){
-        $this->nombre = $nombre;
+    public function setNombreEmpresa($nombreEmpresa){
+        $this->nombreEmpresa = $nombreEmpresa;
     }
-    public function setTelefono($telefono){
-         $this->telefono = $telefono;
+    public function setTelefono($telefonoEmpresa){
+        $this->telefonoEmpresa = $telefonoEmpresa;
     }
-    public function setCorreo($correo){
-        $this->correo = $correo;
+    public function setCorreo($correoEmpresa){
+        $this->correoEmpresa = $correoEmpresa;
     }
-    public function setDireccion($direccion){
-         $this->direccion = $direccion;
+    public function setDireccion($direccionEmpresa){
+        $this->direccionEmpresa = $direccionEmpresa;
     }
     public function setLogo($logo){
-         $this->logo = $logo;
+        $this->logo = $logo;
     }
     public function setRut($rut){
-         $this->rut = $rut;
+        $this->rut = $rut;
     }
     public function setCamaraComercio($camaraComercio){
-         $this->camaraComercio = $camaraComercio;
+        $this->camaraComercio = $camaraComercio;
     }
-
-
 }
-
 ?>

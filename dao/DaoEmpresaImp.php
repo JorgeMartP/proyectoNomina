@@ -1,6 +1,6 @@
 <?php
 include("DaoEmpresa.php");
-include("../Conexion.php");
+include("../conexion/conexion.php");
 include("../modelo/Empresa.php");
 class DaoEmpresaImp extends Conexion implements DaoEmpresa{
     public function registrar(Empresa $a)
@@ -8,10 +8,10 @@ class DaoEmpresaImp extends Conexion implements DaoEmpresa{
         try{
             if ($this->getCnx()!=null) {
             $nit = $a->getNit();
-            $nombre=$a->getNombre();
-            $direccion=$a->getDireccion();
-            $telefono=$a->getTelefono();
-            $correo=$a->getCorreo();
+            $nombre=$a->getNombreEmpresa();
+            $direccion=$a->getDireccionEmpresa();
+            $telefono=$a->getTelefonoEmpresa();
+            $correo=$a->getCorreoEmpresa();
             $tipoContribuyente = $a->getTipoContribuyente();
             $digitoVerificacion = $a->getDigitoVerificacion();
             $logo = $a->getLogo();
@@ -26,22 +26,28 @@ class DaoEmpresaImp extends Conexion implements DaoEmpresa{
             echo $p->getMessage().'***********************';
         } 
     }
-    public function modificar(Empresa $a){  
-        $nit = $a->getNit();
-        $nombre=$a->getNombre();
-        $direccion=$a->getDireccion();
-        $telefono=$a->getTelefono();
-        $correo=$a->getCorreo();
-        $tipoContribuyente = $a->getTipoContribuyente();
-        $digitoVerificacion = $a->getDigitoVerificacion();
-        $logo = $a->getLogo();
-        $camaraComercio = $a->getCamaraComercio();
-        $stmt=$this->getCnx()->prepare("UPDATE empresa " +
-        "SET nombre =$nombre," +
-        "formacion =$formacion," +
-        "sexo = $sexo" +
-        "where documento =$documento");
-        $stmt->execute();
+    public function modificar(Empresa $a){
+        try{
+            $nit = $a->getNit();
+            $nombre=$a->getNombreEmpresa();
+            $direccion=$a->getDireccionEmpresa();
+            $telefono=$a->getTelefonoEmpresa();
+            $correo=$a->getCorreoEmpresa();
+            $tipoContribuyente = $a->getTipoContribuyente();
+            $digitoVerificacion = $a->getDigitoVerificacion();
+            $logo = $a->getLogo();
+            $camaraComercio = $a->getCamaraComercio();
+            #$stmt=$this->getCnx()->prepare("UPDATE empresa " +
+            #"SET nombre =$nombre," +
+            #"formacion =$formacion," +
+            #"sexo = $sexo" +
+            #"where documento =$documento");
+            #$stmt->execute();
+            return true;
+        }catch(PDOException $e){
+            echo $e->getMessage().'***********************';
+        }
+        
     }
     public function eliminar(Empresa $a)
     {
@@ -58,15 +64,16 @@ class DaoEmpresaImp extends Conexion implements DaoEmpresa{
         $stmt->execute();
         foreach ($stmt as $key ) {           
             $a = new Empresa(null,null,null,null,null,null,null,null,null,null);
-            $nit = $a->setNit($key['nombre']);
-            $direccion=$a->setDireccion($key['nombre']);
-            $telefono=$a->setTelefono($key['nombre']);
-            $correo=$a->setCorreo($key['nombre']);
-            $tipoContribuyente = $a->setTipoContribuyente($key['nombre']);
-            $digitoVerificacion = $a->setDigitoVerificacion($key['nombre']);
-            $logo = $a->setLogo($key['nombre']);
-            $camaraComercio = $a->setCamaraComercio($key['nombre']);
-            $nombre=$a->setNombre($key['nombre']);          
+            $nit = $a->setNit($key['nit']);
+            $direccion=$a->setDireccion($key['direccion']);
+            $telefono=$a->setTelefono($key['telefono']);
+            $correo=$a->setCorreo($key['correo']);
+            $tipoContribuyente = $a->setTipoContribuyente($key['tipoContribuyente']);
+            $digitoVerificacion = $a->setDigitoVerificacion($key['digitoVerificacion']);
+            $logo = $a->setLogo($key['logo']);
+            $rut = $a->setRut($key['rut']);
+            $camaraComercio = $a->setCamaraComercio($key['camaraComercio']);
+            $nombre=$a->setNombreEmpresa($key['nombre']);          
             array_push($lista,$a);            
         }        
         //$this->getCnx()->close();
@@ -76,6 +83,31 @@ class DaoEmpresaImp extends Conexion implements DaoEmpresa{
         return $lista;   
     }
 
+    public function traer($nit){
+        try{    
+            $stmt = $this->getCnx()->prepare("select * from empresa where nit = $nit");
+            $lista = array();
+            $stmt->execute();
+            foreach ($stmt as $key ) {           
+                $e = new Empresa(null,null,null,null,null,null,null,null,null,null);
+                $nit = $e->setNit($key['nit']);
+                $direccion=$e->setDireccion($key['direccion']);
+                $telefono=$e->setTelefono($key['telefono']);
+                $correo=$e->setCorreo($key['correo']);
+                $tipoContribuyente = $e->setTipoContribuyente($key['tipoContribuyente']);
+                $digitoVerificacion = $e->setDigitoVerificacion($key['digitoVerificacion']);
+                $logo = $e->setLogo($key['logo']);
+                $rut = $e->setRut($key['rut']);
+                $camaraComercio = $e->setCamaraComercio($key['camaraComercio']);
+                $nombre=$e->setNombreEmpresa($key['nombre']);          
+                return $e;         
+            }        
+            //$this->getCnx()->close();
+        }catch(PDOException $e){
+            $e->getMessage().'error en listar de DaoAprendizImpl';
+        } 
+            
+    }
 }
 
 ?>

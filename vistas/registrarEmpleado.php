@@ -11,7 +11,7 @@
     <section class="section">
     <h1>Registro Empresa</h1>
     <div class="wrap">
-    <form action="../controlador/controladorregistro.php", method="GET">
+    <form action="../controlador/controladorregistro.php", method="POST">
     <label for="">NIT</label>    
     <input type="number" name="nit" id="nit" class="form-control">
 
