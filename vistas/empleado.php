@@ -71,7 +71,6 @@
       </tbody>
     </table>
   </section>
-  
   <script src="../js/modal.js"></script>
 </body>
 </html>

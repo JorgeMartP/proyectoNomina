@@ -5,13 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Empresa</title>
+    <link rel="stylesheet" href="../styles/modal.css">
 </head>
-
+<?php
+require('../dao/DaoEmpresaImp.php');
+$dao = new DaoEmpresaImp();
+if (isset($_GET['id'])) {
+    $nit = $_GET['id'];
+    $Actualizar = $dao->traer($nit);
+}
+?>
 <body>
     <div id="modal2" class="modal2">
         <div class="modal-content2">
             <h1>Actualizar Empresa</h1>
-                    <form action="controladorEditarEmpresa.php" id="registration-form" class="form" method="post">
+                    <form action="../controlador/controladorEditarEmpresa.php?id=<?php echo $Actualizar->getNit()?>" id="registration-form" class="form" method="POST" enctype="multipart/form-data">
                         <div class="flex">
                             <div class="form-group">
                                 <input type="text" id="nit" name="nitUp" class="form-input" value="<?php echo $Actualizar->getNit() ?>" required>
@@ -51,11 +59,11 @@
                             <label for="digitoVerificacion" class="heading">Dígito Verificación</label>
                         </div>
                         <div class="form-group">
-                            <input type="file" id="logo" name="logoUp" class="form-input">
+                            <input type="file" id="logo" name="imagen" class="form-input">
                             <label for="logo" class="logo">Logo</label>
                         </div>
                         <div class="form-group">
-                            <input type="file" id="camaraComercio" name="camaraComercioUp" class="form-input">
+                            <input type="file" id="camaraComercio" name="pdf" class="form-input">
                             <label for="camaraComercio" class="camaraComercio">Cámara Comercio</label>
                         </div>
                 <input type="submit" value="Actualizar" class="Boton" name="bottonUp">

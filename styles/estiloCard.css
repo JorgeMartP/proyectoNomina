@@ -70,6 +70,10 @@ h1{
   .card .img .add{
     color: #0f2942;
   }
+  .card .img img{
+    width: 4.5em;
+    height: 4.5em;
+  }
   .card .share {
     margin-top: 1em;
     display: flex;

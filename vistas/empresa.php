@@ -13,10 +13,11 @@
 </head>
 <body>
     <h1>Elige una Empresas</h1>
+    <div class="container">
 <?php 
     if(count($Empresas) != 0){
     foreach ($Empresas as $key) {?>
-    <div class="container">
+    
         
         <div class="card">
             <div class="img">
@@ -31,7 +32,7 @@
             </div>
             <div class="share">
                 <a href="../controlador/controladorEliminarEmpresa"><i class='bx bxs-trash'></i></a>
-                <a href="../controlador/controladorEditarEmpresa.php?id=<?=$key->getNit()?>" class="update"><i class='bx bxs-edit'></i></a>
+                <a href="../vistas/editarEmpresa.php?id=<?=$key->getNit()?>" class="update"><i class='bx bxs-edit'></i></a>
             </div>
             <a href="../controlador/controladorListarEmpleado.php">Ingresar</a>
         </div>
@@ -47,7 +48,7 @@
    <div class="modal-content">
     <span id="close-modal-btn">&times;</span>
     <h1>Registrar Empresa</h1>
-    <form action="controladorEmpresa.php" id="registration-form" class="form">
+    <form action="controladorEmpresa.php" id="registration-form" class="form" method="POST" enctype="multipart/form-data">
         <div class="flex">
             <div class="form-group">
                 <input type="text" id="nit" name="nit" class="form-input" required>
@@ -87,11 +88,11 @@
             <label for="digitoVerificacion" class="heading">Dígito Verificación</label>
         </div>
         <div class="form-group">
-            <input type="file" id="logo" name="logo" class="form-input" required>
+            <input type="file" id="logo" name="imagen" class="form-input" accept="image/*" required>
             <label for="logo" class="logo">Logo</label>
         </div>
         <div class="form-group">
-            <input type="file" id="camaraComercio" name="camaraComercio" class="form-input" required >
+            <input type="file" id="camaraComercio" name="pdf" class="form-input" accept=".pdf" required >
             <label for="camaraComercio" class="logo">Cámara Comercio</label>
         </div>
         <input type="submit" value="Registrar" class="Boton" name="bottonEm">
