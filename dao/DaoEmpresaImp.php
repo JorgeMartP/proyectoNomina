@@ -1,6 +1,6 @@
 <?php
 include("DaoEmpresa.php");
-include("../conexion/conexion.php");
+require_once("../conexion/conexion.php");
 include("../modelo/Empresa.php");
 class DaoEmpresaImp extends Conexion implements DaoEmpresa
 {

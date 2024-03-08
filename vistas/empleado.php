@@ -29,7 +29,7 @@
       </button>
     </div>
     <div class="imagen">
-      <label>JORGE MARTINEZ</label>
+      <label>Nombre Usuario</label>
       <div class="logo-imagen">
         <a href="#">
           <img src="../img/deku.jpg" alt="perfil" />
@@ -44,7 +44,7 @@
   <section class="containerTable">
     <div class="button">
       <h1>Empleados</h1>
-      <button class="botton-1">Registrar Empleado</button>
+      <button id="open-modal-btn" class="botton-1">Registrar Empleado</button>
     </div>
     <table>
       <thead>
@@ -59,18 +59,94 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>123456789</td>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john.doe@example.com</td>
-          <td>(123) 456-7890</td>
-          <td><a href=""><i class='bx bxs-trash'></i></a></td>
-          <td><a href=""><i class='bx bxs-edit-alt'></i></a></td>
-        </tr>
+        <?php
+
+        foreach ($Empleados as $key) {
+          echo "<tr><td>" . $key->getIdentificacion() . "</td>";
+          echo "<td>" . $key->getNombre() . "</td>";
+          echo "<td>" . $key->getApellido() . "</td>";
+          echo "<td>" . $key->getCorreo() . "</td>";
+          echo "<td>" . $key->getTelefono() . "</td>";
+          echo "<td><a href='../controlador/controladorEditarEmpleado.php?id=" . urlencode($key->getIdentificacion()) . "&empresa=".urlencode($objEmpresa)."'><i class='bx bxs-edit-alt'></i> </a></td>";
+          echo "<td><a href='../controlador/controladorEmpleado.php?id=". $key->getIdentificacion() ."?empresa=".$objEmpresa."'><i class='bx bxs-trash'></i></a></td></tr>";
+        } ?>
       </tbody>
     </table>
   </section>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="close-modal-btn">&times;</span>
+      <h1>Registrar Empleado</h1>
+      <form action="controladorEmpleado.php?empresa=<?=$objEmpresa?>" id="registration-form" class="form" method="POST" enctype="multipart/form-data">
+        <div class="flex">
+          <div class="form-group">
+            <input type="number" id="identificacion" name="identificacion" class="form-input" required>
+            <label for="identificacion" class="heading">N° Identificacion</label>
+          </div>
+          <div class="form-group">
+            <input type="text" id="nombre" name="nombre" class="form-input" required>
+            <label for="nombre" class="heading">Nombre</label>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="form-group">
+            <input type="text" id="apellido" name="apellido" class="form-input" required>
+            <label for="direccion" class="heading">Apellido</label>
+          </div>
+          <div class="form-group">
+            <input type="text" id="tipoDocumento" name="tipoDocumento" class="form-input" required>
+            <label for="tipoDocumento" class="heading">Tipo de Documento</label>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="form-group">
+            <input type="text" id="genero" name="genero" class="form-input" required>
+            <label for="genero" class="heading">Genero</label>
+          </div>
+          <div class="form-group">
+            <input type="text" id="ciudad" name="ciudad" class="form-input" required>
+            <label for="ciudad" class="heading">Ciudad</label>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="form-group">
+            <input type="text" id="correo" name="correo" class="form-input" required>
+            <label for="correo" class="heading">Correo</label>
+          </div>
+          <div class="form-group">
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-input" required>
+            <label for="fechaNacimiento" class="logo">Fecha Nacimiento</label>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="form-group">
+            <input type="date" id="fechaExpedicion" name="fechaExpedicion" class="form-input" required>
+            <label for="fechaExpedicion" class="logo">Fecha Nacimiento</label>
+          </div>
+          <div class="form-group">
+            <input type="number" id="telefono" name="telefono" class="form-input" required>
+            <label for="telefono" class="heading">Telefono</label>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="form-group">
+            <input type="text" id="direccion" name="direccion" class="form-input" required>
+            <label for="direccion" class="heading">Dirección</label>
+          </div>
+          <div class="form-group">
+            <input type="estadoCivil" id="estadoCivil" name="estadoCivil" class="form-input" required>
+            <label for="estadoCivil" class="heading">Estado Civil</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" id="nivelEstudio" name="nivelEstudio" class="form-input" required>
+          <label for="nivelEstudio" class="heading">Nivel de Estudio</label>
+        </div>
+        <input type="submit" value="Registrar" class="Boton" name="boton">
+      </form>
+    </div>
+  </div>
   <script src="../js/modal.js"></script>
 </body>
+
 </html>

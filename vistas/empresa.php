@@ -15,6 +15,7 @@
     <h1>Elige una Empresas</h1>
     <div class="container">
 <?php 
+    
     if(count($Empresas) != 0){
     foreach ($Empresas as $key) {?>
     
@@ -34,7 +35,7 @@
                 <a href="../controlador/controladorEliminarEmpresa"><i class='bx bxs-trash'></i></a>
                 <a href="../vistas/editarEmpresa.php?id=<?=$key->getNit()?>" class="update"><i class='bx bxs-edit'></i></a>
             </div>
-            <a href="../controlador/controladorListarEmpleado.php">Ingresar</a>
+            <a href="../controlador/controladorEmpleado.php?empresa=<?=$key->getNit()?>">Ingresar</a>
         </div>
             <?php  }}?>
         <div class="card">

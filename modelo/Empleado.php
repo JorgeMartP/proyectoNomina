@@ -37,6 +37,9 @@ class Empleado extends Persona {
     public function getEmpresa(){
         return $this->empresa;
     }
+    public function obtenerNitEmpresa() {
+        return $this->empresa->getNit();
+    }
 }
 
 
