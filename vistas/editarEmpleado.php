@@ -10,7 +10,7 @@
 <div id="modal2" class="modal2">
     <div class="modal-content">
       <h1>Registrar Empleado</h1>
-      <form action="controladorEditarEmpleado.php?empresa=<?=$objEmpresa?>&id=<?= $empleado?>" id="registration-form" class="form" method="POST">
+      <form action="controladorEditarEmpleado.php?empresa=<?=$objEmpresa?>&id=<?= $Empleados->getIdentificacion()?>" id="registration-form" class="form" method="POST">
         <div class="flex">
           <div class="form-group">
             <input type="number" id="identificacion" name="identificacion" class="form-input" value="<?= $Empleados->getIdentificacion()?>" required>
@@ -75,7 +75,7 @@
           <input type="text" id="nivelEstudio" name="nivelEstudio" class="form-input" value="<?= $Empleados->getNivelEstudio()?>" required>
           <label for="nivelEstudio" class="heading">Nivel de Estudio</label>
         </div>
-        <input type="submit" value="Registrar" class="Boton" name="boton">
+        <input type="submit" value="Actualizar" class="Boton" name="boton">
       </form>
     </div>
   </div>

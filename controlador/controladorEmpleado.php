@@ -19,12 +19,10 @@
     
     if(isset($_GET['empresa'])){
         $objEmpresa = $_GET['empresa'];
+        $empresa = $daoEmpre->traer($objEmpresa);
+        $Empleados=$dao->listar($objEmpresa);
     }
-    else{
-        echo "no se envio el nit empresa";
-    }
-    $empresa = $daoEmpre->traer($objEmpresa);
-    $Empleados=$dao->listar($objEmpresa);
+    
     if (isset($_POST['boton'])) {
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
@@ -58,6 +56,16 @@
         $dao->registrar($e);
         if($dao == true){
             header("Location: controladorEmpleado.php?empresa=". $objEmpresa);
+        }
+    }
+
+    if(isset($_GET['idEmp']) && isset($_GET['idEmpresa'])){
+        $idEmpresa = $_GET['idEmpresa'];
+        $idEmpleado = $_GET['idEmp'];
+        $Empleado12=$dao->traer($idEmpleado, $idEmpresa);
+        $resultado = $dao->eliminar($Empleado12);
+        if($resultado == true){
+            header("Location: controladorEmpleado.php?empresa=". $idEmpresa);
         }
     }
     include('../vistas/empleado.php');

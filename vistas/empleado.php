@@ -60,7 +60,6 @@
       </thead>
       <tbody>
         <?php
-
         foreach ($Empleados as $key) {
           echo "<tr><td>" . $key->getIdentificacion() . "</td>";
           echo "<td>" . $key->getNombre() . "</td>";
@@ -68,7 +67,7 @@
           echo "<td>" . $key->getCorreo() . "</td>";
           echo "<td>" . $key->getTelefono() . "</td>";
           echo "<td><a href='../controlador/controladorEditarEmpleado.php?id=" . urlencode($key->getIdentificacion()) . "&empresa=".urlencode($objEmpresa)."'><i class='bx bxs-edit-alt'></i> </a></td>";
-          echo "<td><a href='../controlador/controladorEmpleado.php?id=". $key->getIdentificacion() ."?empresa=".$objEmpresa."'><i class='bx bxs-trash'></i></a></td></tr>";
+          echo "<td><a href='../controlador/controladorEmpleado.php?idEmp=". $key->getIdentificacion() ."&idEmpresa=".$objEmpresa."' onclick='advertencia(event)'><i class='bx bxs-trash'></i></a></td></tr>";
         } ?>
       </tbody>
     </table>
@@ -147,6 +146,11 @@
     </div>
   </div>
   <script src="../js/modal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../js/alert.js"></script>
+  <script>
+
+  </script>
 </body>
 
 </html>

@@ -24,7 +24,6 @@ class DaoEmpleadoImplementacion extends Conexion implements DaoEmpleado{
             $estadoCivil=$e->getEstadoCivil();
             $nivelEstudio=$e->getNivelEstudio();
             $empresa = $e->obtenerNitEmpresa();
-            //$empresa = $e->ingresarEmpresa("Natural", "01", "12345678", "Calzado S.A.S", "3282679120", "calzado@gmail.com", "calle 33 # 24B - 123", "log.jpg", "camra.jpg");
             $sql="insert into empleado (identificacion, nombre, apellido, tipoDocumento, genero, correo, fechaNacimiento, telefono, direccion, ciudad, fechaExpedicion, estadoCivil, nivelEstudio, nit) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $stmt=$this->getCnx()->prepare($sql);
             $resultado = $stmt->execute([$identificacion, $nombre, $apellido, $tipoDocumento, $genero,
@@ -54,26 +53,27 @@ class DaoEmpleadoImplementacion extends Conexion implements DaoEmpleado{
         $nivelEstudio=$e->getNivelEstudio();
         $empresa = $e->obtenerNitEmpresa();
         $stmt=$this->getCnx()->prepare("UPDATE empleado " .
-        "SET nombre =$nombre," .
-        "apellido =$apellido," .
-        "tipoDocumento = $tipoDocumento" .
-        "genero = $genero" .
-        "correo = $correo" .
-        "fechaNacimiento = $fechaNacimiento" .
-        "telefono = $telefono" .
-        "direccion = $direccion" .
-        "ciudad = $ciudad" .
-        "fechaExpedicion = $fechaExpedicion" .
-        "estadoCivil= $estadoCivil" .
-        "nivelEstudio= $nivelEstudio" .
-        "where identificacion =$identificacion and nit = $empresa");
+        "SET nombre = '$nombre'," .
+        "apellido = '$apellido'," .
+        "tipoDocumento = '$tipoDocumento'," .
+        "genero = '$genero'," .
+        "correo = '$correo'," .
+        "fechaNacimiento = '$fechaNacimiento'," .
+        "telefono = '$telefono'," .
+        "direccion = '$direccion'," .
+        "ciudad = '$ciudad'," .
+        "fechaExpedicion = '$fechaExpedicion'," .
+        "estadoCivil= '$estadoCivil'," .
+        "nivelEstudio= '$nivelEstudio'" .
+        "where identificacion = '$identificacion' and nit = '$empresa'");
         $stmt->execute();        
     }
     
     public function eliminar(Empleado $e){        
         $identificacion=$e->getIdentificacion();
         $stmt=$this->getCnx()->prepare("delete from empleado where identificacion=$identificacion");
-        $stmt->execute();        
+        $resultado = $stmt->execute();  
+        return $resultado;
     }
     public function listar($empresa){
         $lista = null;
