@@ -10,20 +10,24 @@
 <?php
 require('../dao/DaoEmpresaImp.php');
 $dao = new DaoEmpresaImp();
+//codigo para saber si se manda un parametro por GET y capturarlo 
 if (isset($_GET['id'])) {
     $nit = $_GET['id'];
+    //variable para traer la informacion de la empresa seleccionada 
     $Actualizar = $dao->traer($nit);
 }
 ?>
 <body>
+    <!--Formulario para actualizar empresa -->
     <div id="modal2" class="modal2">
         <div class="modal-content2">
             <h1>Actualizar Empresa</h1>
+            <!--mostrar en el formulario la informacion de la empresa elegida-->
                     <form action="../controlador/controladorEditarEmpresa.php?id=<?php echo $Actualizar->getNit()?>" id="registration-form" class="form" method="POST" enctype="multipart/form-data">
                         <div class="flex">
                             <div class="form-group">
-                                <input type="text" id="nit" name="nitUp" class="form-input" value="<?php echo $Actualizar->getNit() ?>" required>
-                                <label for="nit" class="heading">NIT</label>
+                                <input type="text" id="nit" name="nitUp" class="form-input" value="<?php echo $Actualizar->getNit() ?>" readonly required>
+                                <label for="nit" class="logo">NIT</label>
                             </div>
                             <div class="form-group">
                                 <input type="text" id="nombre" name="nombreUp" class="form-input" value="<?= $Actualizar->getNombreEmpresa() ?>" required>
@@ -71,5 +75,4 @@ if (isset($_GET['id'])) {
         </div>
     </div>
 </body>
-
 </html>

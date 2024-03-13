@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!--Formulario para actualizar empleado -->
 <div id="modal2" class="modal2">
     <div class="modal-content">
       <h1>Registrar Empleado</h1>
+      <!--mostrar en el formulario la informacion del empleado-->
       <form action="controladorEditarEmpleado.php?empresa=<?=$objEmpresa?>&id=<?= $Empleados->getIdentificacion()?>" id="registration-form" class="form" method="POST">
         <div class="flex">
           <div class="form-group">
-            <input type="number" id="identificacion" name="identificacion" class="form-input" value="<?= $Empleados->getIdentificacion()?>" required>
+            <input type="number" id="identificacion" name="identificacion" class="form-input" value="<?= $Empleados->getIdentificacion()?>" readonly required>
             <label for="identificacion" class="heading">N° Identificacion</label>
           </div>
           <div class="form-group">

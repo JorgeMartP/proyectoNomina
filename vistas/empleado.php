@@ -45,6 +45,7 @@
     <div class="button">
       <h1>Empleados</h1>
       <button id="open-modal-btn" class="botton-1">Registrar Empleado</button>
+      <a href="../controlador/controladorEmpresa.php" class="botton-2">Regresar</a>
     </div>
     <table>
       <thead>
@@ -60,6 +61,7 @@
       </thead>
       <tbody>
         <?php
+        //llenar la tabla de la informacion de empleados 
         foreach ($Empleados as $key) {
           echo "<tr><td>" . $key->getIdentificacion() . "</td>";
           echo "<td>" . $key->getNombre() . "</td>";
@@ -72,6 +74,7 @@
       </tbody>
     </table>
   </section>
+  <!--Modal para registrar empleado se abre y cierra con javascript  -->
   <div id="modal" class="modal">
     <div class="modal-content">
       <span id="close-modal-btn">&times;</span>

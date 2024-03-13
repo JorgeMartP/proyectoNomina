@@ -1,6 +1,6 @@
 <?php
+#clase hija de la clase persona
 require ('Persona.php');
-
 class Empleado extends Persona {
     private $fechaExpedicion;
     private $estadoCivil;

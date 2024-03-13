@@ -1,10 +1,9 @@
-
 function advertencia(e){
     e.preventDefault();
     var url=e.currentTarget.getAttribute('href');
     Swal.fire({
         title: '¿Esta seguro?',
-        text: '¡No podrá recuperar este registro !',
+        text: '¡Se eliminara la Empresa y sus empleados!',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor:'#2CB073',
@@ -24,7 +23,3 @@ function advertencia(e){
         }
     })
 }
-
-
-
-

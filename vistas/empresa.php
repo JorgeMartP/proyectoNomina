@@ -15,36 +15,44 @@
     <h1>Elige una Empresas</h1>
     <div class="container">
 <?php 
-    
+    //listar las empresas existentes en la base de datos en una card
+    // Se comprueba si hay empresas para listar
     if(count($Empresas) != 0){
+        // Se recorren las empresas existentes
     foreach ($Empresas as $key) {?>
-    
-        
+    <!-- Se muestra una card para cada empresa -->
         <div class="card">
+            <!-- Se muestra el logo de la empresa -->
             <div class="img">
                 <img src="<?= $key->getLogo()?>" alt="logo">
             </div>
+            <!-- Se muestra el nombre de la empresa traidos desde la clase Empresa -->
             <span><?=$key->getNombreEmpresa()?></span>
+            <!-- Se muestran detalles de la empresa -->
             <div class="info">
                 <p><span>Nit: </span><?=$key->getNit()?></p>
                 <p><span>Dirección: </span><?=$key->getDireccionEmpresa()?></p>
                 <p><span>Teléfono: </span><?=$key->getTelefonoEmpresa()?></p>
                 <p><span>Correo: </span><?=$key->getCorreoEmpresa()?></p>
             </div>
+            <!-- Se muestran los enlaces para editar y eliminar la empresa segun el nit del la empresa seleccionada -->
             <div class="share">
-                <a href="../controlador/controladorEliminarEmpresa"><i class='bx bxs-trash'></i></a>
-                <a href="../vistas/editarEmpresa.php?id=<?=$key->getNit()?>" class="update"><i class='bx bxs-edit'></i></a>
+                <a href="../controlador/controladorEmpresa.php?empresa=<?=$key->getNit()?>" onclick="advertencia(event)"><i class='bx bxs-trash'></i></a>
+                <a href="../vistas/editarEmpresa.php?id=<?=$key->getNit()?>" class="update" ><i class='bx bxs-edit'></i></a>
             </div>
+            <!-- Se muestra un enlace para ingresar a los empleados de la empresa -->
             <a href="../controlador/controladorEmpleado.php?empresa=<?=$key->getNit()?>">Ingresar</a>
         </div>
             <?php  }}?>
         <div class="card">
+            <!-- Botón para abrir el modal de registro -->
             <h1>Crear Empresa</h1>
             <div class="img">
                 <button id="open-modal-btn" class="add"><i class='bx bxs-add-to-queue'></i></button>
             </div>
         </div>
     </div>
+<!--modal con el formulario  para registrar Empresa se abre y cierra con el script modal.js -->
 <div id="modal" class="modal">
    <div class="modal-content">
     <span id="close-modal-btn">&times;</span>
@@ -96,16 +104,15 @@
             <input type="file" id="camaraComercio" name="pdf" class="form-input" accept=".pdf" required >
             <label for="camaraComercio" class="logo">Cámara Comercio</label>
         </div>
+        <!-- Botón de envío del formulario -->
         <input type="submit" value="Registrar" class="Boton" name="bottonEm">
     </form>
 </div>
 </div>
-
-
+<!-- Se incluyen los scripts -->
 <script src="../js/modal.js"></script>
-<script>
-    
-</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../js/empresaAlert.js"></script>
 </body>
 
 </html>

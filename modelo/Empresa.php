@@ -1,4 +1,5 @@
 <?php
+#clase empresa 
 class Empresa{
     private $tipoContribuyente;
     private $nit;

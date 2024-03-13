@@ -1,4 +1,5 @@
 <?php
+#clase Padre de empleado
 class Persona{
     private $nombre;
     private $apellido;

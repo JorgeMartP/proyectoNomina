@@ -1,5 +1,5 @@
 <?php
-
+// Definición de la interfaz DaoEmpleado
 interface DaoEmpleado{
     public function registrar(Empleado $e);
     public function  modificar(Empleado $e);
